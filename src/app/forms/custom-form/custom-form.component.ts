@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { ControlValueAccessor } from "@angular/forms";
 
 @Component({
@@ -12,12 +12,15 @@ export class CustomFormComponent implements ControlValueAccessor, OnChanges {
   propagateChange: any = () => {};
   @Input()
   placeholder: string;
+  @ViewChild('input')
+  input: ElementRef;
 
   constructor() {
   }
 
   clearSearch() {
     this.text = '';
+    this.input.nativeElement.focus();
   }
 
   writeValue(obj: any): void {

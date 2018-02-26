@@ -1,4 +1,4 @@
 <div class="btn-group">
-  <input placeholder="{{ placeholder }}" type="text" [(ngModel)]="text" name="text" class="form-control">
+  <input placeholder="{{ placeholder }}" type="text" [(ngModel)]="text" name="text" class="form-control" #input>
   <span *ngIf="text && text.length > 0" (click)="clearSearch()" id="search-clear" class="glyphicon glyphicon-remove"></span>
 </div>
