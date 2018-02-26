@@ -4,11 +4,12 @@
 <button class="btn btn-primary" (click)="changeComponent('reactive')">
   Reactive form
 </button>
-<button class="btn btn-primary">
+<button class="btn btn-primary" (click)="changeComponent('custom')">
   Custom input component
 </button>
 
-<ng-container [ngSwitch]="component">
+<div [ngSwitch]="component" class="container">
   <app-template-driven *ngSwitchCase="'template-driven'"></app-template-driven>
   <app-reactive *ngSwitchCase="'reactive'"></app-reactive>
-</ng-container>
+  <app-custom-form [placeholder]="'Custom input'" *ngSwitchCase="'custom'"></app-custom-form>
+</div>
