@@ -1,42 +1,26 @@
-import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { ControlValueAccessor } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { ToasterService } from "angular5-toaster/dist";
 
 @Component({
   selector: 'app-custom-form',
   templateUrl: './custom-form.component.html',
   styleUrls: ['./custom-form.component.css']
 })
-export class CustomFormComponent implements ControlValueAccessor, OnChanges {
+export class CustomFormComponent implements OnInit {
 
-  text= '';
-  propagateChange: any = () => {};
-  @Input()
-  placeholder: string;
-  @ViewChild('input')
-  input: ElementRef;
+  customForm: FormGroup;
 
-  constructor() {
+  constructor(private fb: FormBuilder, private toasterService: ToasterService) { }
+
+  ngOnInit() {
+    this.customForm = this.fb.group({
+      customInput: new FormControl('', [Validators.required, Validators.minLength(3)])
+    })
   }
 
-  clearSearch() {
-    this.text = '';
-    this.input.nativeElement.focus();
-  }
-
-  writeValue(obj: any): void {
-  }
-
-  registerOnChange(fn: any): void {
-    this.propagateChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['text'] && changes['text'].currentValue) {
-      this.propagateChange(this.text);
-    }
+  onSubmit() {
+    this.toasterService.pop('success', 'Submitted data:', JSON.stringify(this.customForm.value));
   }
 
 }

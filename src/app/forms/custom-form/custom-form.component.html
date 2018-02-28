@@ -1,4 +1,5 @@
-<div class="btn-group">
-  <input placeholder="{{ placeholder }}" type="text" [(ngModel)]="text" name="text" class="form-control" #input>
-  <span *ngIf="text && text.length > 0" (click)="clearSearch()" id="search-clear" class="glyphicon glyphicon-remove"></span>
-</div>
+<form [formGroup]="customForm" (submit)="onSubmit()">
+  <app-custom-input [placeholder]="'Custom input'" formControlName="customInput"></app-custom-input>
+
+  <button type="submit" class="btn btn-success">submit</button>
+</form>

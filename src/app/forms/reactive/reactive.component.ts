@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from "@angular/forms";
+import { ToasterService } from "angular5-toaster/dist";
 
 @Component({
   selector: 'app-reactive',
@@ -10,7 +11,7 @@ export class ReactiveComponent implements OnInit {
 
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private toasterService: ToasterService) {
   }
 
   ngOnInit() {
@@ -86,7 +87,7 @@ export class ReactiveComponent implements OnInit {
   }
 
   register() {
-    console.log('Submitted');
+    this.toasterService.pop('success', 'Submitted data:', JSON.stringify(this.registrationForm));
   }
 
 }

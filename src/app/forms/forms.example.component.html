@@ -11,5 +11,5 @@
 <div [ngSwitch]="component" class="container">
   <app-template-driven *ngSwitchCase="'template-driven'"></app-template-driven>
   <app-reactive *ngSwitchCase="'reactive'"></app-reactive>
-  <app-custom-form [placeholder]="'Custom input'" *ngSwitchCase="'custom'"></app-custom-form>
+  <app-custom-form *ngSwitchCase="'custom'"></app-custom-form>
 </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToasterService } from "angular5-toaster/dist";
 
 export class Hero {
     public id: number;
@@ -17,12 +18,12 @@ export class TemplateDrivenComponent {
   powers = ['Really Smart', 'Super Flexible', 'Super Hot', 'Weather Changer'];
   model: Hero;
 
-  constructor() {
+  constructor(private toasterService: ToasterService) {
     this.model = new Hero();
   }
 
   onSubmit() {
-    console.log('Submitted');
+    this.toasterService.pop('success', 'Submitted data:', JSON.stringify(this.model));
   }
 
 }
