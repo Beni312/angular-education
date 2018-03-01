@@ -14,10 +14,17 @@ const Routing: ModuleWithProviders = RouterModule.forRoot([
     loadChildren: 'app/forms/forms.example.module#FormsExampleModule'
   },
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'forms'
+  },
+  {
     path: '**',
     component: ErrorComponent
   }
-]);
+], {
+  useHash: true
+});
 
 
 @NgModule({
