@@ -33,15 +33,15 @@ const Routes = RouterModule.forChild([
 
 @NgModule({
   declarations: [
-    ReactiveComponent,
+    CustomFormComponent,
     FormsExampleComponent,
-    TemplateDrivenComponent,
     NameValidatorDirective,
-    CustomFormComponent
+    ReactiveComponent,
+    TemplateDrivenComponent
   ],
   imports: [
-    CommonModule,
     BrowserModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     Routes,
