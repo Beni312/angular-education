@@ -13,7 +13,21 @@ import { TemplateDrivenComponent } from "./template-driven/template-driven.compo
 const Routes = RouterModule.forChild([
   {
     path: '',
-    component: FormsExampleComponent
+    component: FormsExampleComponent,
+    children: [
+      {
+        path: 'template-driven',
+        component: TemplateDrivenComponent
+      },
+      {
+        path: 'reactive',
+        component: ReactiveComponent
+      },
+      {
+        path: 'custom-form',
+        component: CustomFormComponent
+      }
+    ]
   }
 ]);
 

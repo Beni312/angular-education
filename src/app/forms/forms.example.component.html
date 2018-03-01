@@ -1,15 +1,19 @@
-<button class="btn btn-primary" (click)="changeComponent('template-driven')">
-  template-driven form
-</button>
-<button class="btn btn-primary" (click)="changeComponent('reactive')">
-  Reactive form
-</button>
-<button class="btn btn-primary" (click)="changeComponent('custom')">
-  Custom input component
-</button>
+<div class="jumbotron">
+  <div class="container">
+    <div class="col-sm-8 col-sm-offset-2">
+      <button class="btn btn-primary" (click)="changeComponent('template-driven')" routerLink="/template-driven">
+        template-driven form
+      </button>
+      <button class="btn btn-primary" (click)="changeComponent('reactive')" routerLink="/reactive">
+        Reactive form
+      </button>
+      <button class="btn btn-primary" (click)="changeComponent('custom')" routerLink="/custom-form">
+        Custom input component
+      </button>
 
-<div [ngSwitch]="component" class="container">
-  <app-template-driven *ngSwitchCase="'template-driven'"></app-template-driven>
-  <app-reactive *ngSwitchCase="'reactive'"></app-reactive>
-  <app-custom-form *ngSwitchCase="'custom'"></app-custom-form>
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
 </div>
