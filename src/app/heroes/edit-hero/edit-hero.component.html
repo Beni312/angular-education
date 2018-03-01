@@ -1,0 +1,31 @@
+<form [formGroup]="editHeroForm" (submit)="update()">
+  <mat-form-field>
+    <input placeholder="Id" matInput formControlName="id">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input placeholder="Name" matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select formControlName="power">
+      <mat-option *ngFor="let power of powers" [value]="power">
+        {{ power }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input placeholder="Alter ego" matInput formControlName="alterEgo">
+  </mat-form-field>
+
+  <div class="button-bar">
+    <button mat-button color="primary" type="submit"
+            [disabled]="editHeroForm.invalid">
+      Update
+    </button>
+    <button mat-button type="button" (click)="cancel()">
+      Cancel
+    </button>
+  </div>
+</form>

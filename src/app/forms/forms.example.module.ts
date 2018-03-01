@@ -1,4 +1,3 @@
-import { BrowserModule } from "@angular/platform-browser";
 import { CustomFormComponent } from './custom-form/custom-form.component';
 import { CommonModule } from "@angular/common";
 import { FormsExampleComponent } from "./forms.example.component";
@@ -40,7 +39,6 @@ const Routes = RouterModule.forChild([
     TemplateDrivenComponent
   ],
   imports: [
-    BrowserModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

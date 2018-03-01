@@ -76,7 +76,6 @@ export class ReactiveComponent implements OnInit {
         })
       })
     });
-
   }
 
   static usernameValidator(c): ValidationErrors {
