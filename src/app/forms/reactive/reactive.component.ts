@@ -87,7 +87,7 @@ export class ReactiveComponent implements OnInit {
   }
 
   register() {
-    this.toasterService.pop('success', 'Submitted data:', JSON.stringify(this.registrationForm));
+    this.toasterService.pop('success', 'Submitted data:', JSON.stringify(this.registrationForm.value));
   }
 
 }
