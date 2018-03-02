@@ -26,7 +26,8 @@ const Routing: ModuleWithProviders = RouterModule.forRoot([
   useHash: true
 });
 
-
+// FormsExampleModule - lazyLoad
+// HeroesModule importtal
 @NgModule({
   declarations: [
     AppComponent

@@ -34,7 +34,7 @@ export class CustomInputComponent implements ControlValueAccessor {
   writeValue(obj: any): void {
   }
 
-
+  //a változtatásokat a propagateChange függvénnyel kell megadni
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
@@ -42,6 +42,7 @@ export class CustomInputComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
   }
 
+  //az input mező (input) eseményére, meghívódik, és beállítja az érték változását
   change() {
     this.propagateChange(this.text);
   }

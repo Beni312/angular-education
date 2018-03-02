@@ -31,7 +31,6 @@ const Routing: ModuleWithProviders = RouterModule.forChild([
   providers: [
     HeroesService,
 
-
     {
       provide: HTTP_INTERCEPTORS,
       useClass: FakeBackendInterceptor,

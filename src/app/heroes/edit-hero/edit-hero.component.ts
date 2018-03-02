@@ -18,6 +18,7 @@ export class EditHeroComponent implements OnInit {
 
   ngOnInit() {
     this.editHeroForm = this.fb.group({
+      //az id-t ne lehessen szerkeszteni, az disabled lesz
       id: new FormControl({value: this.data.id, disabled: true}),
       name: new FormControl(this.data.name, [Validators.required, Validators.minLength(3)]),
       power: new FormControl(this.data.power, [Validators.required, Validators.minLength(3)]),
