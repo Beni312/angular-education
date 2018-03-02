@@ -1,5 +1,5 @@
 <form [formGroup]="customForm" (submit)="onSubmit()">
   <app-custom-input #customInput [placeholder]="'Custom input'" formControlName="customInput"></app-custom-input>
 
-  <button type="submit" class="btn btn-success">submit</button>
+  <app-custom-button [buttonType]="'submit'">Submit</app-custom-button>
 </form>

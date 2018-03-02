@@ -12,8 +12,4 @@ export class FormsExampleComponent {
 
   constructor() {
   }
-
-  changeComponent(component: any) {
-    this.component = component;
-  }
 }
