@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 export class Hero {
   id: number;
@@ -8,8 +8,8 @@ export class Hero {
   power: string;
   alterEgo: string;
 
-  static buildHero(id: number, name:string, power: string, alterEgo:string): Hero {
-    let hero = new Hero();
+  static buildHero(id: number, name: string, power: string, alterEgo: string): Hero {
+    const hero = new Hero();
     hero.id = id;
     hero.name = name;
     hero.power = power;

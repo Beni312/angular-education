@@ -1,5 +1,21 @@
 <form [formGroup]="customForm" (submit)="onSubmit()">
-  <app-custom-input #customInput [placeholder]="'Custom input'" formControlName="customInput"></app-custom-input>
-
-  <app-custom-button [buttonType]="'submit'">Submit</app-custom-button>
+  <div class="form-group">
+    <app-custom-input
+      #customInput
+      [placeholder]="'Custom input'"
+      formControlName="customInput"></app-custom-input>
+  </div>
+  <div class="form-group">
+    <app-autocomplete-multi-select
+      formControlName="heroes"
+      [items]="heroes"
+      [placeholder]="'Choose heroes'"
+      [property]="'name'"
+      [selected]="selected"
+      [toOrder]="true">
+    </app-autocomplete-multi-select>
+  </div>
+  <div class="form-group">
+    <app-custom-button [buttonType]="'submit'">Submit</app-custom-button>
+  </div>
 </form>

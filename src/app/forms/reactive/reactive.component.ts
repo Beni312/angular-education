@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from "@angular/forms";
-import { ToasterService } from "angular5-toaster/dist";
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { ToasterService } from 'angular5-toaster/dist';
 
 @Component({
   selector: 'app-reactive',

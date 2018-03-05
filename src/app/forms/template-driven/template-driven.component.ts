@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { ToasterService } from "angular5-toaster/dist";
-
-export class Hero {
-    public id: number;
-    public name: string;
-    public power: string;
-    public alterEgo?: string;
-}
+import { Hero } from '../../heroes/heroes.service';
+import { ToasterService } from 'angular5-toaster/dist';
 
 @Component({
   selector: 'app-template-driven',
@@ -25,5 +19,4 @@ export class TemplateDrivenComponent {
   onSubmit() {
     this.toasterService.pop('success', 'Submitted data:', JSON.stringify(this.model));
   }
-
 }
