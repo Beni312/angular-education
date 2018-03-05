@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Hero } from '../heroes.service';
 
 @Component({
   selector: 'app-edit-hero',
@@ -13,8 +14,9 @@ export class EditHeroComponent implements OnInit {
   powers = ['Really Smart', 'Super Flexible', 'Super Hot', 'Weather Changer'];
 
   constructor(private dialogRef: MatDialogRef<EditHeroComponent>,
-              @Inject(MAT_DIALOG_DATA) private data: any,
-              private fb: FormBuilder) { }
+              @Inject(MAT_DIALOG_DATA) private data: Hero,
+              private fb: FormBuilder) {
+  }
 
   ngOnInit() {
     this.editHeroForm = this.fb.group({

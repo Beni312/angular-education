@@ -1,8 +1,9 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Hero, HeroesService } from "./heroes.service";
-import { ToasterService } from "angular5-toaster/dist";
-import { MatDialog, MatTableDataSource } from "@angular/material";
-import { EditHeroComponent } from "./edit-hero/edit-hero.component";
+import { EditHeroComponent } from './edit-hero/edit-hero.component';
+import { Hero, HeroesService } from './heroes.service';
+import { MatDialog, MatTableDataSource } from '@angular/material';
+import { ToasterService } from 'angular5-toaster/dist';
 
 @Component({
   selector: 'app-heroes',
@@ -16,11 +17,12 @@ export class HeroesComponent implements OnInit {
 
   constructor(private heroesService: HeroesService,
               private messageService: ToasterService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.reload();
+    this.tableDataSource.data = this.activatedRoute.snapshot.data['heroes'];
   }
 
   reload() {
@@ -42,10 +44,10 @@ export class HeroesComponent implements OnInit {
     });
 
     popup.afterClosed().subscribe(result => {
-      if(!result) {
+      if (!result) {
         return;
       }
-      this.heroesService.update(Hero.buildHero(hero.id, result.name,  result.power, result.alterEgo)).subscribe(() => {
+      this.heroesService.update(Hero.buildHero(hero.id, result.name, result.power, result.alterEgo)).subscribe(() => {
         this.reload();
         this.messageService.pop('success', 'Hero successfully updated!');
       });
