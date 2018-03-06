@@ -28,6 +28,7 @@ export class CustomInputComponent implements ControlValueAccessor {
 
   clearSearch() {
     this.text = '';
+    this.propagateChange(this.text);
     this.input.nativeElement.focus();
   }
 
@@ -42,7 +43,7 @@ export class CustomInputComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
   }
 
-  //az input mező (input) eseményére, meghívódik, és beállítja az érték változását
+  //az input mező (ngModelChange) eseményére, meghívódik, és beállítja az érték változását
   change() {
     this.propagateChange(this.text);
   }
