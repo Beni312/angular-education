@@ -33,8 +33,8 @@ export class AutocompleteMultiSelectComponent implements ControlValueAccessor, O
   @ViewChild('inp')
   input: ElementRef;
 
-  propagateChange: any = () => {
-  };
+  propagateChange: any = () => {};
+  propagateTouch: any = () => {};
 
   constructor() {
   }
@@ -101,6 +101,14 @@ export class AutocompleteMultiSelectComponent implements ControlValueAccessor, O
     this.propagateChange = fn;
   }
 
+  //ha szeretnénk ellenőrizni, hogy a felhasználó megérinti e a komponenst, meg adni egy fv-t, ahogy a registerOnChange-nél
   registerOnTouched(fn: any): void {
+    this.propagateTouch = fn;
+  }
+
+  //egy eseményre pedig beállítjuk, hogy a felhasználó megérintette a komponenst, ez esetben az input mező click eseményére fogja megérinteni
+  onTouch() {
+    console.log('touched');
+    this.propagateTouch();
   }
 }
