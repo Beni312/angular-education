@@ -11,6 +11,7 @@
         <div *ngFor="let item of filteredList" (click)="writeValue(item)">{{ item[property] }}</div>
       </li>
     </ul>
+    <ng-content></ng-content>
   </div>
   <div class="selected form-control">
     <div *ngFor="let item of selected" class="item">

@@ -14,18 +14,21 @@ export class CustomFormComponent implements OnInit, AfterViewInit {
 
   customForm: FormGroup;
 
+  //a template-ban levő változóra hivatkozik: #customInput, így tudjuk az elementet elérni
   @ViewChild('customInput')
   customInput: CustomInputComponent;
   selected: Hero[] = [];
   heroes: Hero[];
+  isSubmitted: boolean = false;
 
   constructor(private fb: FormBuilder, private toasterService: ToasterService, private heroesService: HeroesService) {
   }
 
   ngOnInit() {
+    //updateOn: a formcontrol értékét csak a submit esemény hatására állítja be, így csak akkor fogja validálni (a kezdő értéket validálja)
     this.customForm = this.fb.group({
-      customInput: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      heroes: new FormControl('', Validators.minLength(2))
+      customInput: new FormControl('', {validators: [Validators.required, Validators.minLength(3)], updateOn: 'submit'}),
+      heroes: new FormControl('', {validators: [Validators.required, Validators.minLength(2)], updateOn: 'submit'})
     });
     this.heroesService.getHeroes().subscribe(response => {
       this.heroes = response;
@@ -33,10 +36,23 @@ export class CustomFormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    //amint a view betöltődik ráfókuszálunk az input mezőre, a customInput-ban deklarált változóra hivatkozva
     this.customInput.input.nativeElement.focus();
   }
 
+  isFieldValid(field: string) {
+    return this.customForm.get(field).invalid && this.isSubmitted;
+  }
+
+  hasError(field: string, error: string) {
+    return this.customForm.get(field).errors[error];
+  }
+
   onSubmit() {
-    this.toasterService.pop('success', 'Valid: ' + this.customForm.valid.toString(), JSON.stringify(this.customForm.value));
+    if (this.customForm.valid) {
+      this.toasterService.pop('success', 'Valid: ' + this.customForm.valid.toString(), JSON.stringify(this.customForm.value));
+    } else {
+      this.isSubmitted = true;
+    }
   }
 }
